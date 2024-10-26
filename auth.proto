@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "github.com/acronix0/REST-API-Go-protos/gen/go/auth";
+option go_package = "github.com/acronix0/REST-API-Go-protos/gen/go/auth;authv1";
 
 service Auth{
   rpc SignIn(LoginRequest) returns (LoginResponse){}
   rpc SignUp(RegisterRequest) returns (RegisterResponse){}
+  rpc SignOut(SignOutRequest) returns (SignOutResponse){}
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse){}
 }
 message LoginRequest{
@@ -30,6 +31,12 @@ message RegisterRequest{
 message RegisterResponse{
   string jwtToken = 1;
   string refreshToken = 2;
+}
+ message SignOutRequest{
+  string refreshToken = 1;
+}
+message SignOutResponse{
+  bool success = 1;
 }
 message RefreshTokenRequest{
   string refreshToken = 1;
