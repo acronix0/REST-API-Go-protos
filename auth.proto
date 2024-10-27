@@ -28,10 +28,13 @@ message SignUpRequest{
   string role = 5;
   string deviceInfo = 6;
 }
+
 message SignUpResponse{
   string jwtToken = 1;
   string refreshToken = 2;
+  int32 userId = 3; 
 }
+
  message SignOutRequest{
   string refreshToken = 1;
 }
